@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ 糕糕小屋</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 梦幻玻璃质感与全局样式 */
+        body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+        ::-webkit-scrollbar { height: 8px; width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #fbcfe8; border-radius: 4px; }
+        .glass-panel { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.6); }
+        .tab-active { background: #fdf2f8; border-color: #fbcfe8; color: #db2777; font-weight: bold; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .tab-inactive { background: rgba(255, 255, 255, 0.2); color: #6b7280; }
+        .hide { display: none; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-200 via-purple-100 to-yellow-100 min-h-screen p-6 md:p-10 transition-all duration-500">
+
+    <div class="max-w-6xl mx-auto mb-8 flex justify-between items-end">
+        <div>
+            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 drop-shadow-sm mb-2">✨ 糕糕的云端小屋</h1>
+            <p class="text-gray-600 text-sm font-medium">大小姐，今天也要按自己的节奏好好生活哦。</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mb-8 flex gap-4">
+        <button id="btn-thesis" onclick="switchTab('thesis')" class="tab-active glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105">🎓 论文监管局</button>
+        <button id="btn-life" onclick="switchTab('life')" class="tab-inactive glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105">🌷 碎片日常</button>
+    </div>
+
+    <div id="thesis-board" class="max-w-6xl mx-auto flex gap-6 overflow-x-auto pb-8 items-start">
+        
+        <div class="min-w-[340px] glass-panel rounded-2xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold text-gray-700 mb-5 flex justify-between items-center">
+                二次查重提交 <span class="text-xs bg-red-500 text-white px-3 py-1 rounded-full shadow-md animate-pulse">极高危死线</span>
+            </h2>
+            <div class="bg-red-50/90 border-l-[6px] border-red-500 rounded-r-xl p-5 shadow-sm mb-4">
+                <h3 class="font-bold text-red-700 text-lg mb-1">🚨 4月13日 上午10:00前</h3>
+                <p class="text-sm text-red-600 font-medium">大小姐！务必在【毕业设计】系统提交！不能压线！重复率超30%直接取消答辩资格！</p>
+                <div class="mt-3 text-xs bg-red-100 text-red-800 p-2 rounded">前置条件：必须先发给导师同意。文档千万别传错版本！</div>
+            </div>
+            <div class="bg-white/60 border border-red-200 rounded-xl p-4 shadow-sm">
+                <h3 class="font-bold text-gray-800 text-md">导师审核催促</h3>
+                <p class="text-sm text-gray-600 mt-1">提交后立刻联系导师登录系统出结果。</p>
+            </div>
+        </div>
+
+        <div class="min-w-[340px] glass-panel rounded-2xl p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-gray-700 mb-5 flex justify-between items-center">
+                导师预审与记录 <span class="text-xs bg-orange-400 text-white px-3 py-1 rounded-full shadow-md">进行中</span>
+            </h2>
+            <div class="bg-orange-50/90 border-l-[6px] border-orange-400 rounded-r-xl p-5 shadow-sm mb-4">
+                <h3 class="font-bold text-orange-700 text-lg mb-1">⏳ 4月11日前发预审</h3>
+                <p class="text-sm text-orange-600 font-medium">数字贸易的面板数据和门槛分析部分，确认格式无误再发给导师查看。</p>
+            </div>
+            <div class="bg-white/60 border border-orange-200 rounded-xl p-4 shadow-sm">
+                <h3 class="font-bold text-gray-800 text-md">📝 补填6次指导记录</h3>
+                <p class="text-sm text-gray-600 mt-1">注意：必须分开不同日期填写，不能填在同一天！</p>
+            </div>
+        </div>
+
+        <div class="min-w-[340px] glass-panel rounded-2xl p-6 shadow-md opacity-90">
+            <h2 class="text-xl font-bold text-gray-700 mb-5 flex justify-between items-center">
+                答辩与归档 <span class="text-xs bg-yellow-400 text-white px-3 py-1 rounded-full shadow-md">待开启</span>
+            </h2>
+            <div class="bg-yellow-50/90 border border-yellow-200 rounded-xl p-4 shadow-sm mb-4">
+                <h3 class="font-bold text-gray-800 text-lg mb-1">🎤 4月29日 正式答辩</h3>
+                <p class="text-sm text-gray-600 mt-1">准备 PPT，练习跨国异质性探究的陈述逻辑。</p>
+            </div>
+            <div class="bg-white/60 border border-gray-200 rounded-xl p-4 shadow-sm">
+                <h3 class="font-bold text-gray-800 text-md">📁 5月8日 存档终稿</h3>
+                <p class="text-sm text-gray-600 mt-1">答辩通过后的最终收尾工作。</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="life-board" class="max-w-6xl mx-auto hide flex flex-wrap gap-6">
+        
+        <div class="flex-1 min-w-[300px] glass-panel rounded-2xl p-6 border-pink-200">
+            <h2 class="text-2xl font-bold text-pink-500 mb-4 flex items-center gap-2">🏠 读研租房攻略</h2>
+            <ul class="space-y-3">
+                <li class="flex items-center gap-3 bg-white/50 p-3 rounded-lg"><input type="checkbox" class="w-5 h-5 accent-pink-500"><span class="text-gray-700 font-medium">确认学校周边的预算范围</span></li>
+                <li class="flex items-center gap-3 bg-white/50 p-3 rounded-lg"><input type="checkbox" class="w-5 h-5 accent-pink-500"><span class="text-gray-700 font-medium">必须要有大窗户和阳光！</span></li>
+                <li class="flex items-center gap-3 bg-white/50 p-3 rounded-lg text-pink-400 cursor-pointer">+ 添加看房备忘录...</li>
+            </ul>
+        </div>
+
+        <div class="flex-1 min-w-[300px] glass-panel rounded-2xl p-6 border-yellow-200">
+            <h2 class="text-2xl font-bold text-yellow-500 mb-4 flex items-center gap-2">🍰 糕糕的奖励池</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-yellow-50/80 p-4 rounded-xl text-center border border-yellow-100 hover:bg-yellow-100 cursor-pointer transition">
+                    <div class="text-3xl mb-1">🎬</div>
+                    <div class="text-sm font-bold text-gray-700">看一部好电影</div>
+                </div>
+                <div class="bg-pink-50/80 p-4 rounded-xl text-center border border-pink-100 hover:bg-pink-100 cursor-pointer transition">
+                    <div class="text-3xl mb-1">🍓</div>
+                    <div class="text-sm font-bold text-gray-700">去吃那家草莓蛋糕</div>
+                </div>
+                <div class="bg-purple-50/80 p-4 rounded-xl text-center border border-purple-100 hover:bg-purple-100 cursor-pointer transition">
+                    <div class="text-3xl mb-1">💤</div>
+                    <div class="text-sm font-bold text-gray-700">毫无负罪感地睡午觉</div>
+                </div>
+                <div class="bg-white/50 p-4 rounded-xl text-center border border-gray-100 text-gray-400 hover:text-pink-400 cursor-pointer transition">
+                    <div class="text-2xl mb-1">+</div>
+                    <div class="text-sm font-bold">添加新奖励</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const thesisBoard = document.getElementById('thesis-board');
+            const lifeBoard = document.getElementById('life-board');
+            const btnThesis = document.getElementById('btn-thesis');
+            const btnLife = document.getElementById('btn-life');
+
+            if (tabId === 'thesis') {
+                thesisBoard.classList.remove('hide');
+                lifeBoard.classList.add('hide');
+                btnThesis.className = 'tab-active glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105';
+                btnLife.className = 'tab-inactive glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105';
+            } else {
+                thesisBoard.classList.add('hide');
+                lifeBoard.classList.remove('hide');
+                btnLife.className = 'tab-active glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105';
+                btnThesis.className = 'tab-inactive glass-panel px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105';
+            }
+        }
+    </script>
+</body>
+</html>
